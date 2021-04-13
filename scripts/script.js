@@ -1,10 +1,68 @@
-let num = 266219;
-let digits = num.toString().split('');
-let realDigits = digits.map(Number)
-let summary = 1;
-for(i=0; i<realDigits.length;i++){
-    summary *= realDigits[i];
+//Первое задание
+let lang = prompt('Введите ru или en').trim().toLowerCase();
+
+let daysru = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота'
+  ];
+  let daysen = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
+//через if
+if(lang==='ru'){
+    console.log(daysru);
 }
-console.log(summary);
-sumpow = summary**3;
-console.log(sumpow.toString().substring(0, 2));
+else if(lang==='en'){
+    console.log(daysen);
+}
+else{
+    console.log('You typed wrong');
+}
+//через switch
+switch(lang){
+    case "ru":
+        console.log(daysru);
+        break;
+    case "en":
+        console.log(daysen);
+        break;
+    default:
+        console.log('You typed wrong');
+}
+  //через многомерный массив  
+let lang_days = [];
+lang_days['ru'] = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота'
+  ];
+lang_days['en'] = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ];
+
+console.log(lang_days[lang]);
+
+//2е задание
+let namePerson = prompt('Введите имя').trim()
+console.log(namePerson == "Артем"?"Директор":namePerson=="Максим"?"преподпватель":"студент");
