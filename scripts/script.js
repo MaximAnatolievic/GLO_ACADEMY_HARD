@@ -1,6 +1,6 @@
-var num = 266219;
-var digits = num.toString().split('');
-var realDigits = digits.map(Number)
+let num = 266219;
+let digits = num.toString().split('');
+let realDigits = digits.map(Number)
 let summary = 1;
 for(i=0; i<realDigits.length;i++){
     summary *= realDigits[i];
