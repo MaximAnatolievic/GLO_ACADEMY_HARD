@@ -1,4 +1,22 @@
 'use strict'
+let
+ourText = document.querySelector('h1'),
+btn = document.querySelector('#start');
+
+function get_random_color() 
+{
+let letters = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
+let color = "";
+for (let i = 0; i < 6; i++ ) 
+    {
+    color += letters[Math.round(Math.random() * 15)];
+    }
+    ourText.textContent = "#" + color;
+    document.body.style.backgroundColor = "#" + color;
+}
+
+btn.addEventListener('click', get_random_color);
+
 
 let week = [
   "Воскресенье",
