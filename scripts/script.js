@@ -1,49 +1,69 @@
 'use strict'
 
 const DomElement = function(selector, height, width, bg, fontSize, name){
-    const elem = document.createElement('div');
-    elem.selector = selector;
-    elem.style.height = height;
-    elem.style.width = width;
-    elem.style.backgroundColor = bg;
-    elem.style.fontSize = fontSize;
-    if(elem.selector == '.'){
-        elem.className = name;
+    this.elem = document.createElement('div');    
+    const inp = document.createElement('input');
+    this.elem.appendChild(inp);
+    inp.style.position = 'relative';
+    inp.placeholder = 'Введи текст';
+    this.selector = selector;
+    this.elem.style.height = height + 'px';
+    this.elem.style.width = width + 'px';
+    this.elem.style.backgroundColor = bg;
+    this.elem.style.fontSize = fontSize;
+    if(this.selector == '.'){
+        this.elem.className = name;
     }
-    if(elem.selector == '#'){
-        elem.id = name;
+    if(this.selector == '#'){
+        this.elem.id = name;
     }
-    elem.style.position='relative';
-    elem.left = 0;
-    elem.top = 0;
-    document.body.append(elem);
-    return elem;
+    this.elem.style.position='absolute';
+    this.elem.left = 0;
+    this.elem.top = 0;
+    inp.style.width = width*0.8 + 'px';
+    inp.style.left = 0.045*width +'px';
+    inp.style.top = height*0.3 + 'px';
+    inp.style.backgroundColor = bg;
+    
+    
+
 };
 
-const aaa = new DomElement('#', '100px', '100px', 'red', 50, 'sqr');
 
-window.addEventListener('keydown', function shake(event){
+DomElement.prototype.add = function(){
+    document.body.append(this.elem);
+};
 
+let aaa = new DomElement('#', 100, 100, 'red', 50, 'sqr');
+
+document.addEventListener("DOMContentLoaded", aaa.add());
+
+document.addEventListener('keydown', function shake(event){
+    
+    const cls =document.querySelector('div');
+    //cls.style.position = 'absolute';
+           
     switch(event.code){
         case 'ArrowRight':
-            aaa.left += 10;
-            aaa.style.left = aaa.left + 'px';
+            cls.left += 10;
+            cls.style.left = cls.left + 'px';
             break;
         case 'ArrowLeft':
-            aaa.left -= 10;
-            aaa.style.left = aaa.left + 'px';
+            cls.left -= 10;
+            cls.style.left = cls.left + 'px';
             break;
 
         case 'ArrowDown':
-            aaa.top += 10;
-            aaa.style.top = aaa.top + 'px';
+            cls.top += 10;
+            cls.style.top = cls.top + 'px';
             break;
         case 'ArrowUp':
-            aaa.top -= 10;
-            aaa.style.top = aaa.top + 'px';
+            cls.top -= 10;
+            cls.style.top = cls.top + 'px';
             break;        
         default:
             console.log('Нажаты не стрелки');
     }
 
-})
+});
+
